@@ -11,8 +11,16 @@
         return $array;
     }
 
-    function addItem($query) {
+    function add($query) {
         global $conn;
         mysqli_query($conn, $query);
+    }
+
+    function getForeign($query) {
+        global $conn;
+        $table = mysqli_query($conn, $query);
+        $data = [];
+        $data = mysqli_fetch_row($table);
+        return $data;
     }
 ?>
