@@ -1,8 +1,8 @@
 <?php
-    $conn = mysqli_connect("localhost", "root", "", "pengambilan barang");
+    $conn = mysqli_connect("localhost", "root", "", "barang");
+    $conn2 = mysqli_connect("localhost", "root", "", "pengambilan_barang");
 
-    function getArray($query) {
-        global $conn;
+    function getArray($conn, $query) {
         $table = mysqli_query($conn, $query);
         $array = [];
         while($data = mysqli_fetch_row($table)) {
@@ -11,13 +11,11 @@
         return $array;
     }
 
-    function add($query) {
-        global $conn;
+    function add($conn, $query) {
         mysqli_query($conn, $query);
     }
 
-    function getForeign($query) {
-        global $conn;
+    function getForeign($conn, $query) {
         $table = mysqli_query($conn, $query);
         $data = [];
         $data = mysqli_fetch_row($table);
