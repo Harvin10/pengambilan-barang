@@ -1,9 +1,9 @@
 <?php 
     require 'functions.php';
 
-    $nama = getArray("SELECT nama FROM barang, pemersatu WHERE id = id_nama");
-    $warna = getArray("SELECT warna FROM warna, pemersatu WHERE id = id_warna");
-    $jenis = getArray("SELECT jenis from jenis, pemersatu WHERE id = id_jenis");
+    $nama = getArray("SELECT nama FROM barang");
+    $warna = getArray("SELECT warna FROM warna");
+    $jenis = getArray("SELECT jenis from jenis");
 ?>
 
 <!DOCTYPE html>
