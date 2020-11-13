@@ -15,9 +15,12 @@
         $jumlah = $_GET["jumlah"];
 
         $id_barang = getForeign($conn, "SELECT id FROM pemersatu WHERE (id_nama IN (SELECT id FROM barang WHERE nama = '$valueNama') AND id_warna IN (SELECT id FROM warna WHERE warna = '$valueWarna') AND id_jenis IN (SELECT id FROM jenis WHERE jenis = '$valueJenis'))");
+
         $id_pengambil = getForeign($conn2, "SELECT id FROM pekerja WHERE pengambil = '$valuePengambil'");
 
-        addDeleteUpdate($conn2, "INSERT INTO barang_diambil VALUE ('', CURRENT_TIMESTAMP(), '$id_barang[0]', '$jumlah', '$id_pengambil[0]')"); 
+        $harga = getForeign($conn, "SELECT harga FROM pemersatu WHERE id = '$id_barang[0]'");
+
+        addDeleteUpdate($conn2, "INSERT INTO barang_diambil VALUE ('', CURRENT_TIMESTAMP(), '$id_barang[0]', '$jumlah', '$id_pengambil[0]', $harga[0])"); 
 
     }
 ?>

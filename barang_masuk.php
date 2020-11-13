@@ -1,5 +1,10 @@
 <?php
     require 'functions.php';
+
+    $nama = getArray($conn, "SELECT nama FROM barang");
+    $warna = getArray($conn, "SELECT warna FROM warna");
+    $jenis = getArray($conn, "SELECT jenis FROM jenis");
+    $supplier = getArray($conn3, "SELECT Nama FROM supplier");
     
     if( isset($_GET["submit"]) ) {
         $nama = $_GET['nama'];
@@ -14,6 +19,7 @@
         if(getForeign($conn, "SELECT warna FROM warna WHERE warna = '$warna'") == false) {
             addDeleteUpdate($conn, "INSERT INTO warna VALUES ('', '$warna')");
         }
+
         if(getForeign($conn, "SELECT jenis FROM jenis WHERE jenis = '$jenis'") == false) {
             addDeleteUpdate($conn, "INSERT INTO jenis VALUES ('', '$jenis')");
         }
@@ -43,15 +49,39 @@
     <form action="" method="GET">
         <label>
             Nama:
-            <input type="text" name="nama">
+            <input type="text" name="nama" list="nama">
+            <datalist id="nama">
+                <?php foreach ($nama as $n) : ?>
+                    <option value="<?= $n[0]; ?>"></option>
+                <?php endforeach; ?>
+            </datalist>
         </label>
         <label>
             Warna:
-            <input type="text" name="warna">
+            <input type="text" name="warna" list="warna">
+            <datalist id="warna">
+                <?php foreach ($warna as $w) : ?>
+                    <option value="<?= $w[0]; ?>"></option>
+                <?php endforeach; ?>
+            </datalist>
         </label>
         <label>
             Jenis:
-            <input type="text" name="jenis">
+            <input type="text" name="jenis" list="jenis">
+            <datalist id="jenis">
+                <?php foreach($jenis as $j) : ?>
+                    <option value="<?= $j[0]; ?>"></option>
+                <?php endforeach; ?>
+            </datalist>
+        </label>
+        <label>
+            Supplier:
+            <input type="text" name="supplier">
+            <datalist id="supplier">
+                <?php foreach($supplier as $s) : ?>
+                    <option value="<?= $s[0] ?>"></option>
+                <?php endforeach; ?>
+            </datalist>
         </label>
         <label>
             Harga:

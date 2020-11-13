@@ -8,7 +8,7 @@
 </head>
 <body>
     <a href="ambil_barang.php">Ambil barang</a>
-    <a href="barang_baru.php">Tambah barang baru</a>
+    <a href="barang_masuk.php">Tambah barang masuk</a>
     <a href="pekerja_baru.php">Tambah pekerja baru</a>
     <a href="daftar_pengambilan_barang.php">Daftar pengambilan barang</a>
     <a href="update_pekerja.php">Update pekerja</a>

@@ -1,7 +1,7 @@
 <?php 
     require 'functions.php';
 
-    $datas = getArray($conn2, "SELECT tanggal, nama , warna, jenis, harga, jumlah, pengambil FROM pengambilan_barang.barang_diambil, pengambilan_barang.pekerja, barang.pemersatu, barang.barang, barang.warna, barang.jenis WHERE barang_diambil.id_barang = pemersatu.id AND pemersatu.id_nama = barang.id AND pemersatu.id_warna = warna.id AND pemersatu.id_jenis = jenis.id AND barang_diambil.id_pekerja = pekerja.id");
+    $datas = getArray($conn2, "SELECT tanggal, nama , warna, jenis, barang_diambil.harga, jumlah, pengambil FROM pengambilan_barang.barang_diambil, pengambilan_barang.pekerja, barang.pemersatu, barang.barang, barang.warna, barang.jenis WHERE barang_diambil.id_barang = pemersatu.id AND pemersatu.id_nama = barang.id AND pemersatu.id_warna = warna.id AND pemersatu.id_jenis = jenis.id AND barang_diambil.id_pekerja = pekerja.id");
     
 ?>
 <!DOCTYPE html>
