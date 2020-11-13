@@ -3,8 +3,10 @@
     
     if( isset($_GET["submit"]) ) {
         $nama = $_GET['nama'];
-
-        add($conn2, "INSERT INTO pekerja VALUES ('', '$nama')");
+        
+        if(getForeign($conn2, "SELECT pengambil FROM pekerja WHERE pengambil = '$nama'") == false) {
+            add($conn2, "INSERT INTO pekerja VALUES ('', '$nama')");
+        }
     }
 ?>
 

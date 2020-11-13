@@ -1,7 +1,8 @@
 <?php 
     require 'functions.php';
 
-    $datas = getArray($conn2, "SELECT * FROM pengambilan_barang.barang_diambil LEFT JOIN barang.pemersatu ON barang_diambil.id_barang = pemersatu.id (LEFT JOIN barang.barang ON pemersatu = barang.id) AND (LEFT JOIN barang.warna ON pemersatu)");
+    $datas = getArray($conn2, "SELECT tanggal, nama , warna, jenis, harga, jumlah, pengambil FROM pengambilan_barang.barang_diambil, pengambilan_barang.pekerja, barang.pemersatu, barang.barang, barang.warna, barang.jenis WHERE barang_diambil.id_barang = pemersatu.id AND pemersatu.id_nama = barang.id AND pemersatu.id_warna = warna.id AND pemersatu.id_jenis = jenis.id AND barang_diambil.id_pekerja = pekerja.id");
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +12,7 @@
     <title>Document</title>
 </head>
 <body>
+    <a href="index.php">Kembali Ke Menu</a>
     <table>
         <tr>
             <th>Tanggal</th>
@@ -21,15 +23,15 @@
             <th>Jumlah Barang</th>
             <th>Pengambil Barang</th>
         </tr>
-        <?php for($i = 0; $i < count($datas); $i++) : ?>
+        <?php foreach ($datas as $data) : ?>
             <tr>
-                <?php for($j = 1; $j < count($datas[$i]); $j++) : ?>
+                <?php foreach ($data as $d) : ?>
                     <td>
-                        <?= $datas[$i][$j] ?>
+                        <?= $d ?>
                     </td>
-                <?php endfor; ?>
+                <?php endforeach; ?>
             </tr>
-        <?php endfor; ?>
+        <?php endforeach; ?>
     </table>
 </body>
 </html>

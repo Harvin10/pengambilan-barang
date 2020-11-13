@@ -21,4 +21,9 @@
         $data = mysqli_fetch_row($table);
         return $data;
     }
+
+    function delete($conn, $query) {
+        mysqli_query($conn, $query);
+    }
+
 ?>
