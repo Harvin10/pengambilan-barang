@@ -5,7 +5,7 @@
         $nama = $_GET['nama'];
         
         if(getForeign($conn2, "SELECT pengambil FROM pekerja WHERE pengambil = '$nama'") == false) {
-            add($conn2, "INSERT INTO pekerja VALUES ('', '$nama')");
+            addDeleteUpdate($conn2, "INSERT INTO pekerja VALUES ('', '$nama')");
         }
     }
 ?>

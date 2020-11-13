@@ -4,7 +4,7 @@
     if( isset($_GET["submit"]) ) {
         $remove = $_GET["pengambil"];
 
-        delete($conn2, "DELETE FROM pekerja WHERE pengambil = '$remove'");
+        addDeleteUpdate($conn2, "DELETE FROM pekerja WHERE pengambil = '$remove'");
     }
 
     $pengambil = getArray($conn2, "SELECT pengambil FROM pekerja");
